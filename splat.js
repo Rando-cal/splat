@@ -7,7 +7,10 @@ const Game = {
     canvasContext: undefined,
     backgroundSprite: undefined,
     ballSprite: undefined,
-    ballPosition: { x : 0, y : 50}
+    ballPosition: { x : 0, y : 50},
+    ballPosition1: { x : 0, y : 50},
+    ballPosition2: { x : 0, y : 50},
+    ballPosition3: { x : 0, y : 50}
 }
 
 Game.update = () => {
@@ -40,12 +43,11 @@ Game.draw = () => {
     Game.drawImage(Game.ballSprite, {x:50, y: 80})
     Game.drawImage(Game.ballSprite, {x:100, y: 300})
     Game.drawImage(Game.ballSprite, {x:180, y: 330})
-
-
 }
 
 Game.mainLoop = () => {
-    // ? Game.update()
+    Game.update()
+    console.log("looped")
     Game.draw()
 }
 
@@ -55,8 +57,8 @@ Game.start = () => {
     Game.ballSprite = new Image();
     Game.ballSprite.src = "./sprites/blue-small.png"
     // waits half a second for sprite to load.Not a loop                        
-    window.setTimeout(Game.mainLoop, 500);
-    
+    // window.setTimeout(Game.mainLoop, 500);
+    window.setTimeout(Game.mainLoop, 1000 / 60)
 }
 
 document.addEventListener('DOMContentLoaded', Game.start)                         
