@@ -10,7 +10,13 @@ const Game = {
     ballPosition: { x : 0, y : 50},
     ballPosition1: { x : 0, y : 50},
     ballPosition2: { x : 0, y : 50},
-    ballPosition3: { x : 0, y : 50}
+    ballPosition3: { x : 0, y : 50},
+    ballPosition4: { x : 0, y : 50},
+    ballPosition5: { x : 0, y : 50},
+    ballPosition6: { x : 0, y : 50}
+
+
+
 }
 
 Game.update = () => {
@@ -19,6 +25,9 @@ Game.update = () => {
     Game.ballPosition1.x = d.getTime() % Game.canvas.width;
     Game.ballPosition2.x = (d.getTime() + 100) % Game.canvas.width;
     Game.ballPosition3.x = (d.getTime() +  200) % Game.canvas.width;
+    Game.ballPosition4.x = (d.getTime() +  50) % Game.canvas.width;
+    Game.ballPosition5.x = (d.getTime() +  120) % Game.canvas.width;
+    Game.ballPosition6.x = (d.getTime() +  10) % Game.canvas.width;
 }
 
 Game.clearCanvas = () => {
@@ -47,7 +56,6 @@ Game.draw = () => {
 
 Game.mainLoop = () => {
     Game.update()
-    console.log("looped")
     Game.draw()
 }
 
