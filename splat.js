@@ -1,7 +1,9 @@
 "use strict";
 // RUN splat.html not this one :)
 
-// Game init
+// !! Not running the animation. Check the loop
+
+// GAME INITs
 const Game = {
     canvas: undefined,
     canvasContext: undefined,
@@ -14,9 +16,6 @@ const Game = {
     ballPosition4: { x : 0, y : 50},
     ballPosition5: { x : 0, y : 50},
     ballPosition6: { x : 0, y : 50}
-
-
-
 }
 
 Game.update = () => {
@@ -43,18 +42,23 @@ Game.drawImage = (sprite, position) => {
     Game.canvasContext.restore();
 }
 
-Game.draw = () => {
-    // Game.drawImage(Game.backgroundSprite, { x : 0, y : 0})
+Game.draw = (i) => {
+    Game.drawImage(Game.backgroundSprite, { x : 0, y : 0})
     Game.drawImage(Game.ballSprite, Game.ballPosition)
     Game.drawImage(Game.ballSprite, Game.ballPosition2)
     Game.drawImage(Game.ballSprite, Game.ballPosition3)
-    Game.drawImage(Game.ballSprite, {x:30, y: 360})
-    Game.drawImage(Game.ballSprite, {x:50, y: 80})
-    Game.drawImage(Game.ballSprite, {x:100, y: 300})
-    Game.drawImage(Game.ballSprite, {x:180, y: 330})
+    Game.drawImage(Game.ballSprite, Game.ballPosition4)
+    Game.drawImage(Game.ballSprite, Game.ballPosition5)
+    Game.drawImage(Game.ballSprite, Game.ballPosition6)
+    
+    // Game.drawImage(Game.ballSprite, {x:30, y: 360})
+    // Game.drawImage(Game.ballSprite, {x:50, y: 80})
+    // Game.drawImage(Game.ballSprite, {x:100, y: 300})
+    // Game.drawImage(Game.ballSprite, {x:180, y: 330})
 }
 
 Game.mainLoop = () => {
+   console.log("hit mainloop#######################")
     Game.update()
     Game.draw()
 }
@@ -63,10 +67,17 @@ Game.start = () => {
     Game.canvas = document.getElementById("myCanvas");
     Game.canvasContext = Game.canvas.getContext('2d');
     Game.ballSprite = new Image();
+    Game.backgroundSprite = new Image()
+    Game.backgroundSprite.src = "./sprites/background-800x480.png"
     Game.ballSprite.src = "./sprites/blue-small.png"
+
     // waits half a second for sprite to load.Not a loop                        
     // window.setTimeout(Game.mainLoop, 500);
-    window.setTimeout(Game.mainLoop, 1000 / 60)
+
+    window.setInterval(Game.mainLoop, 1000 / 60)
 }
 
 document.addEventListener('DOMContentLoaded', Game.start)                         
+
+
+ 
