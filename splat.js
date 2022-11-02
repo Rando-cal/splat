@@ -7,15 +7,20 @@
 const Game = {
     canvas: undefined,
     canvasContext: undefined,
+
     backgroundSprite: undefined,
+
     ballSprite: undefined,
+    
     ballPosition: { x : 0, y : 50},
     ballPosition1: { x : 0, y : 50},
     ballPosition2: { x : 0, y : 50},
     ballPosition3: { x : 0, y : 50},
     ballPosition4: { x : 0, y : 50},
     ballPosition5: { x : 0, y : 50},
-    ballPosition6: { x : 0, y : 50}
+    ballPosition6: { x : 0, y : 50},
+
+     backgroundMusic : undefined
 }
 
 Game.update = () => {
@@ -70,10 +75,15 @@ Game.start = () => {
     Game.backgroundSprite = new Image()
     Game.backgroundSprite.src = "./sprites/background-800x480.png"
     Game.ballSprite.src = "./sprites/blue-small.png"
+    Game.backgroundMusic = new Audio()
+    Game.backgroundMusic.src = "Meydan-Elk.mp3"
+    Game.backgroundMusic.play()
+    Game.backgroundMusic.volume = 0.4
 
     // waits half a second for sprite to load.Not a loop                        
     // window.setTimeout(Game.mainLoop, 500);
 
+    // original code called for setTimeout()
     window.setInterval(Game.mainLoop, 1000 / 60)
 }
 
