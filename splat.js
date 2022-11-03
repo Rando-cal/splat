@@ -38,6 +38,10 @@ Game.clearCanvas = () => {
     Game.canvasContext.clearBall(0,0, Game.canvas.width, Game.canvas.height)
 }
 
+let handleMouseMove = (evt) => {
+    Game.ballPosition = { x : evt.pageX, y : evt.pageY}
+}
+
 
 Game.drawImage = (sprite, position) => {
     Game.canvasContext.save();
@@ -46,6 +50,8 @@ Game.drawImage = (sprite, position) => {
         0,0, sprite.width, sprite.height)
     Game.canvasContext.restore();
 }
+
+
 
 Game.draw = (i) => {
     Game.drawImage(Game.backgroundSprite, { x : 0, y : 0})
@@ -88,6 +94,6 @@ Game.start = () => {
 }
 
 document.addEventListener('DOMContentLoaded', Game.start)                         
-
+document.onmousemove = handleMouseMove
 
  
