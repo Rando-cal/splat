@@ -20,8 +20,11 @@ const Game = {
     ballPosition5: { x : 0, y : 50},
     ballPosition6: { x : 0, y : 50},
 
-     backgroundMusic : undefined
+    backgroundMusic : undefined,
+
+    ballOrigin : {x : 0, y : 0}
 }
+
 
 Game.update = () => {
     let d = new Date()
@@ -43,7 +46,7 @@ let handleMouseMove = (evt) => {
 }
 
 
-Game.drawImage = (sprite, position) => {
+Game.drawImage = (sprite, position, origin) => {
     Game.canvasContext.save();
     Game.canvasContext.translate(position.x, position.y)
     Game.canvasContext.drawImage(sprite, 0, 0, sprite.width, sprite.height,
@@ -55,13 +58,20 @@ Game.drawImage = (sprite, position) => {
 
 Game.draw = (i) => {
     Game.drawImage(Game.backgroundSprite, { x : 0, y : 0})
-    Game.drawImage(Game.ballSprite, Game.ballPosition)
-    Game.drawImage(Game.ballSprite, Game.ballPosition2)
-    Game.drawImage(Game.ballSprite, Game.ballPosition3)
-    Game.drawImage(Game.ballSprite, Game.ballPosition4)
-    Game.drawImage(Game.ballSprite, Game.ballPosition5)
-    Game.drawImage(Game.ballSprite, Game.ballPosition6)
-    
+    // Game.drawImage(Game.ballSprite, Game.ballPosition)
+    // Game.drawImage(Game.ballSprite, Game.ballPosition2)
+    // Game.drawImage(Game.ballSprite, Game.ballPosition3)
+    // Game.drawImage(Game.ballSprite, Game.ballPosition4)
+    // Game.drawImage(Game.ballSprite, Game.ballPosition5)
+    // Game.drawImage(Game.ballSprite, Game.ballPosition6)
+
+    Game.ballOrigin = {
+        x : Game.ballSprite.width / 2,
+        y : Game.ballSprite.height 
+    }
+
+    Game.drawImage(Game.ballSprite, Game.mousePostion, Game.ballOrigin)
+
     // Game.drawImage(Game.ballSprite, {x:30, y: 360})
     // Game.drawImage(Game.ballSprite, {x:50, y: 80})
     // Game.drawImage(Game.ballSprite, {x:100, y: 300})
